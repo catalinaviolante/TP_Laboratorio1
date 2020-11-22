@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "utn.h"
 
 /****************************************************
     Menu:
@@ -160,7 +161,6 @@ int main()
  			}
      	}
      }while(menuChoosenOption != 10);
-     ll_deleteLinkedList(listaEmpleados);
      printf("Gracias, vuelva pronto!");
      return 0;
 }

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Employee.h"
+#include "utn.h"
 #define BUFFER_SIZE 4096
 
 static int isValidInt(char string[]);
@@ -88,17 +89,12 @@ Employee* employee_new()
 
 	if(this!=NULL)
 	{
-		employee_setId(this, 0);
-		employee_setName(this, "\n");
-		employee_setWorkedHours(this, 0);
-		employee_setSalary(this, 0);
 		return this;
 	}
-	else
-	{
-		return NULL;
-	}
+	return NULL;
+
 }
+
 Employee* employee_newCharParameters(char* charId,char* charName,char* charWorkedHours, char* charSalary)
 {
 	Employee* this = employee_new();
@@ -114,6 +110,30 @@ Employee* employee_newCharParameters(char* charId,char* charName,char* charWorke
 	}
 	employee_delete(this);
 	return NULL;
+}
+
+int employee_setSalaryTxt(Employee* this, char* sueldo)
+{
+	int output=-1;
+	char buffer[NAME_SIZE];
+	if(this!=NULL && sueldo!=NULL && isInt(sueldo)==1)
+	{
+			strncpy(buffer, sueldo, NAME_SIZE);
+			this->sueldo=atoi(buffer);
+			output=0;
+	}
+	return output;
+}
+int employee_setSalary(Employee* this,int sueldo)
+{
+	int output=-1;
+	if(this!=NULL && sueldo>0)
+	{
+		this->sueldo = sueldo;
+		output=0;
+	}
+	return output;
+
 }
 
 Employee* employee_newParameters(int id,char* name,int workedHours, float salary)

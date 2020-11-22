@@ -367,6 +367,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 			pFile = fopen(path, "wb");
 			if(pFile!=NULL)
 			{
+				//acomodo de menor a mayor los id.
 				ll_sort(pArrayListEmployee, employee_sortById, 1);
 				for(int i=0;i<len;i++)
 				{
